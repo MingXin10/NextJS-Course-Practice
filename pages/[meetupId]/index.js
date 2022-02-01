@@ -73,8 +73,8 @@ export async function getStaticProps(context) {
         address: selectedMeetup.address,
         image: selectedMeetup.image,
         description: selectedMeetup.description
-      }
-      
+      },
+    revalidate: 30
     }
   }
 }

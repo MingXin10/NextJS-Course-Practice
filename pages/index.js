@@ -70,7 +70,7 @@ export async function getStaticProps() {
         id: meetup._id.toString()
       }))
     },
-    revalidate: 120 //經過幾秒重新產新pre-render頁面。有這個就不用手動build
+    revalidate: 30 //經過幾秒重新產新pre-render頁面。有這個就不用手動build
   }
 }
 export default HomePage
