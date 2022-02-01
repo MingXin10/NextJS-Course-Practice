@@ -32,7 +32,7 @@ export async function getStaticPaths() {
     //fallback為fall=>只會render paths裡面有的內容，如果使用者直接key paths沒有的，會得到404。可以用來設定使用者較常造訪的頁面
     //fallback為true=>會從server找符合的資料。設定較少造訪的，就不會造成太多request，有快取效果
     //blocking
-    fallback: false,
+    fallback: 'blocking',
     paths: meetups.map((meetup) => ({
       params: {
         meetupId: meetup._id.toString()
@@ -74,7 +74,6 @@ export async function getStaticProps(context) {
         image: selectedMeetup.image,
         description: selectedMeetup.description
       },
-    revalidate: 30
     }
   }
 }
