@@ -33,12 +33,16 @@ export async function getStaticPaths() {
     //fallback為true=>會從server找符合的資料。設定較少造訪的，就不會造成太多request，有快取效果
     //blocking
     fallback: false,
-    paths: meetups.map((meetup) => ({
-      params: {
-        meetupId: meetup._id.toString()
-      }
-    })),
-    // paths: [{ params: { meetupId: 'm1' } }, { params: { meetupId: 'm2' } }]
+    // paths: meetups.map((meetup) => ({
+    //   params: {
+    //     meetupId: meetup._id.toString()
+    //   }
+    // })),
+    paths: [
+      { params: { meetupId: 'm1' } },
+      { params: { meetupId: 'm2' } },
+      { params: { meetupId: '62021f33a7a4e95b89548852' } }
+    ]
   }
 }
 export async function getStaticProps(context) {
