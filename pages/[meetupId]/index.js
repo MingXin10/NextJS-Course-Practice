@@ -1,4 +1,4 @@
-import { MongoClient, ObjectId } from 'mongodb'
+import { MongoClient,ObjectId } from 'mongodb'
 import MeetupDetail from '../../components/meetups/MeetupDetail'
 import Head from 'next/head'
 const MeetupDetails = (props) => {
@@ -6,7 +6,10 @@ const MeetupDetails = (props) => {
     <>
       <Head>
         <title>{props.meetupData.title}</title>
-        <meta name="description" content={props.meetupData.description} />
+        <meta
+          name="description"
+          content={props.meetupData.description}
+        />
       </Head>
       <MeetupDetail
         image={props.meetupData.image}
@@ -30,17 +33,12 @@ export async function getStaticPaths() {
     //fallback為true=>會從server找符合的資料。設定較少造訪的，就不會造成太多request，有快取效果
     //blocking
     fallback: false,
-    // paths: meetups.map((meetup) => ({
-    //   params: {
-    //     meetupId: meetup._id.toString()
-    //   }
-    // })),
-    paths: [
-      { params: { meetupId: '61f92e51b2ae271e90387d69' } },
-      { params: { meetupId: '61f9315d5903f9ed8e0a856e' } },
-      { params: { meetupId: '61f9328f5903f9ed8e0a856f' } },
-      // { params: { meetupId: '62021b98f27ed2d08afce5a7' } }
-    ]
+    paths: meetups.map((meetup) => ({
+      params: {
+        meetupId: meetup._id.toString()
+      }
+    })),
+    // paths: [{ params: { meetupId: 'm1' } }, { params: { meetupId: 'm2' } }]
   }
 }
 export async function getStaticProps(context) {
